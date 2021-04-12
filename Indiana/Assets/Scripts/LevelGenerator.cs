@@ -19,7 +19,7 @@ public class LevelGenerator : MonoBehaviour
 
     public string[] level = File.ReadAllLines("level1.txt");
 
-    [ContextMenu("Create Platforms")]
+    [ContextMenu("Create Platforms")] //Позволяет вызывать скрипт из контекстного меню компонента.
     void CreatePlatforms()
     {
         GameObject Parent = GameObject.Find("Platforms");
@@ -40,7 +40,7 @@ public class LevelGenerator : MonoBehaviour
                 
                 if (levelString[j] == 'o' || levelString[j] == 'q')
                 {
-                    print("oq:"+ i + "+" + j);
+                    //print("oq:"+ i + "+" + j);
                     
                     GameObject oq = Instantiate(Static_Platform, new Vector3(j * 3 / 2, 0, i * 3), Quaternion.identity) as GameObject;
                     oq.transform.SetParent(Parent.transform, false);
@@ -50,7 +50,7 @@ public class LevelGenerator : MonoBehaviour
                 }
                 if (levelString[j] == 'v' || levelString[j] == 'x')
                 {
-                    print("vx:" + i + "+" + j);
+                    //print("vx:" + i + "+" + j);
                     
                     GameObject vx = Instantiate(Hiding_Platform, new Vector3(j * 3 / 2, 0, i * 3), Quaternion.identity) as GameObject;
                     vx.transform.SetParent(Parent.transform, false);
@@ -58,7 +58,7 @@ public class LevelGenerator : MonoBehaviour
                 }
                 if (levelString[j] == 'x' || levelString[j] == 'q')
                 {
-                    print("xq:" + i + "+" + j);
+                    //print("xq:" + i + "+" + j);
                     
                     GameObject xq = Instantiate(Seed, new Vector3(j * 3 / 2, 1, i * 3), Quaternion.identity) as GameObject;
                     xq.transform.SetParent(Parent.transform, false);
