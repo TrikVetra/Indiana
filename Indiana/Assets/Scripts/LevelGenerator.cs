@@ -17,7 +17,7 @@ public class LevelGenerator : MonoBehaviour
 
 
 
-    public string[] level = File.ReadAllLines("level.txt");
+    public string[] level = File.ReadAllLines("level1.txt");
 
     [ContextMenu("Create Platforms")]
     void CreatePlatforms()
@@ -40,23 +40,27 @@ public class LevelGenerator : MonoBehaviour
                 
                 if (levelString[j] == 'o' || levelString[j] == 'q')
                 {
-
-                    GameObject oq = Instantiate(Static_Platform, new Vector3(i * 3, 0, j * 3), Quaternion.identity) as GameObject;
+                    print("oq:"+ i + "+" + j);
+                    
+                    GameObject oq = Instantiate(Static_Platform, new Vector3(j * 3 / 2, 0, i * 3), Quaternion.identity) as GameObject;
                     oq.transform.SetParent(Parent.transform, false);
-                    //Instantiate(Static_Platform, new Vector3(i * 3, 0, j * 3), Quaternion.identity);
+                    
 
 
                 }
                 if (levelString[j] == 'v' || levelString[j] == 'x')
                 {
-
-                    GameObject vx = Instantiate(Hiding_Platform, new Vector3(i * 3, 0, j * 3), Quaternion.identity) as GameObject;
+                    print("vx:" + i + "+" + j);
+                    
+                    GameObject vx = Instantiate(Hiding_Platform, new Vector3(j * 3 / 2, 0, i * 3), Quaternion.identity) as GameObject;
                     vx.transform.SetParent(Parent.transform, false);
 
                 }
                 if (levelString[j] == 'x' || levelString[j] == 'q')
                 {
-                    GameObject xq = Instantiate(Seed, new Vector3(i * 3, 1, j * 3), Quaternion.identity) as GameObject;
+                    print("xq:" + i + "+" + j);
+                    
+                    GameObject xq = Instantiate(Seed, new Vector3(j * 3 / 2, 1, i * 3), Quaternion.identity) as GameObject;
                     xq.transform.SetParent(Parent.transform, false);
                 }
 

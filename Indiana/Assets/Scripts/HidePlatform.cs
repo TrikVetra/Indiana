@@ -18,5 +18,13 @@ public class HidePlatform : MonoBehaviour
         Rigidbody rb = GetComponent<Rigidbody>(); //Включение гравитации
         rb.isKinematic = false;
     }
-       
+
+    void Update()
+    {
+        if (transform.position.y < 50)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
 }
