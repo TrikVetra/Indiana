@@ -38,13 +38,14 @@ public class SphereMoving : MonoBehaviour
 
     public void PlayerFalled()
     {
+        print("wtf");
         RestartAnim.SetBool("BoxOpen", true);
     }
 
     public void LevelRestart()
     {
         transform.position = StartPosition;
-        RestartAnim.SetBool("BoxOpen", false);
+        RestartAnim.SetBool("BoxOpen",  false);
     }
 
     public void LevelContinue()
@@ -52,7 +53,20 @@ public class SphereMoving : MonoBehaviour
         transform.position = ControlPointPosition;
         RestartAnim.SetBool("BoxOpen", false);
     }
-    
+
+
+   void OnTriggerExit(Collider col)
+    {
+        
+        if (col.transform.tag == "FallCollaider")
+        {
+            
+            PlayerFalled();
+        }
+    }
+
+
+
     /*
     void OnTriggerStay(Collider cal) //Шарик всё ещё не упал
     {
@@ -63,22 +77,17 @@ public class SphereMoving : MonoBehaviour
     }
     */
 
-    private void OnTriggerExit(Collider cal) //Шарик упал
-    {
-        if (cal.transform.tag == "FallCollaider")
-        {
-            PlayerFalled();
-        }
-    }
 
-    private void OnTriggerEnter(Collider cal) //Шарик прошел через контрольную плоскость
+    private void OnTriggerEnter(Collider col) //Шарик прошел через контрольную плоскость
     {
         
-        if (cal.transform.tag == "ControlPoint")
+        if (col.transform.tag == "ControlPoint")
         {
-            ControlPointPosition = cal.gameObject.transform.position;
+            ControlPointPosition = col.gameObject.transform.position;
             
         }
+     
+
     }
   
 }

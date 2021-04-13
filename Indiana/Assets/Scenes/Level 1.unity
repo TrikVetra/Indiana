@@ -10193,7 +10193,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7355927163907824937, guid: 031590bcfd3337047a50ef39e1bede07,
           type: 3}
-        m_MethodName: LevelContinue
+        m_MethodName: LevelRestart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12273,8 +12273,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.8
-  m_Text: "\u041F\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u0440\u0435\u043A\u043B\u0430\u043C\u0443
-    \u0438 \u043F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C"
+  m_Text: "\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C \n(-10 \u043E\u0447\u043A\u043E\u0432)"
 --- !u!222 &266754193
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -91588,12 +91587,12 @@ PrefabInstance:
     - target: {fileID: 4499896715532851072, guid: 7ea98c7c8f3eb0b4f861184cc122b342,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4499896715532851072, guid: 7ea98c7c8f3eb0b4f861184cc122b342,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 270
+      value: 255.1
       objectReference: {fileID: 0}
     - target: {fileID: 4499896715532851072, guid: 7ea98c7c8f3eb0b4f861184cc122b342,
         type: 3}
