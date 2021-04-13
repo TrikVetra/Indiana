@@ -5,11 +5,13 @@ using UnityEngine;
 public class SphereMoving : MonoBehaviour
 {
     Rigidbody rb; //Создаём переменную для управления физикой
-    public float range = 8f; //Создание переменной для управления скоростью перемещения
+    private float range = 8f; //Создание переменной для управления скоростью перемещения
     private GameObject MainCamera; //Переменная хранящая объект камеры
     private Vector3 CameraOffset; //Переменная, определяющая сдвиг камеры
     private Vector3 StartPosition; //Установка стартовой позиции
     private Vector3 ControlPointPosition; //Позиция последней контрольной точки
+
+    public Animator RestartAnim; //Аниматор окна рестарта
 
 
     void Start()
@@ -28,14 +30,14 @@ public class SphereMoving : MonoBehaviour
         float h = Input.GetAxis("Horizontal") * range; //Проверка нажатия клавиш. Если влево передаётся -1*range. Вправо: 1*range
         float v = Input.GetAxis("Vertical") * range; //Проверка нажатия клавиш. Если вниз передаётся -1*range. Вверх: 1*range
 
-        rb.velocity = new Vector3(h, 0, v); //Перемещение объекта в зависимости от нажатой клавиши     
+        rb.velocity = new Vector3(h, 0, v); //Перемещение объекта в зависимости от нажатой клавиши   
+
+        MainCamera.transform.position = transform.position + CameraOffset;  //Если контакт с коллаидером есть, прибавлять сдвиг шара камере 
     }
 
 
-<<<<<<< HEAD
     public void PlayerFalled()
     {
-        print("wtf");
         RestartAnim.SetBool("BoxOpen", true);
     }
 
@@ -43,18 +45,13 @@ public class SphereMoving : MonoBehaviour
     {
         transform.position = StartPosition;
         RestartAnim.SetBool("BoxOpen",  false);
-=======
-    public void LevelRestart()
-    {
-        transform.position = StartPosition;
->>>>>>> parent of 6a5b9bb (Сделана анимация окна рестарта)
     }
 
     public void LevelContinue()
     {
         transform.position = ControlPointPosition;
+        RestartAnim.SetBool("BoxOpen", false);
     }
-<<<<<<< HEAD
 
 
    void OnTriggerExit(Collider col)
@@ -84,21 +81,6 @@ public class SphereMoving : MonoBehaviour
     {
         
         if (col.transform.tag == "ControlPoint")
-=======
-    
-    void OnTriggerStay(Collider cal) //Проверка на столкновение с коллаидером отслеживающим падение
-        {
-
-            if (cal.transform.tag == "FallCollaider")
-            {
-                MainCamera.transform.position = transform.position + CameraOffset;  //Если контакт с коллаидером есть, прибавлять сдвиг            
-            }
-        }
-
-    private void OnTriggerEnter(Collider cal)
-    {
-        if (cal.transform.tag == "ControlPoint")
->>>>>>> parent of 6a5b9bb (Сделана анимация окна рестарта)
         {
             ControlPointPosition = col.gameObject.transform.position;
             
@@ -106,5 +88,5 @@ public class SphereMoving : MonoBehaviour
      
 
     }
-
+  
 }
